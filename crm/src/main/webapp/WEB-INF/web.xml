@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app
+        xmlns="https://jakarta.ee/xml/ns/jakartaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+        id="dataservice"  version="6.0">
+
+  <display-name>dataservice application</display-name>
+  <!-- spring监听器加载applicationContext.xml配置文件 -->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:applicationContext.xml</param-value>
+  </context-param>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <!-- spring字符过滤器 -->
+  <filter>
+    <filter-name>encodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>encodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <!-- Spring mvc分发servlet -->
+  <servlet>
+    <servlet-name>dispatcher</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:applicationContext-mvc.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+<!--    StandardServletMultipartResolver：依赖于 Servlet 3.0 对 multipart 请求的支持-->
+    <multipart-config>
+<!--    文件上传大小验证，没意义文件已经到服务器了，压力已经造成了-->
+<!--      &lt;!&ndash; 临时路劲 &ndash;&gt;-->
+<!--      <location>/tmp/test/uploads</location>-->
+<!--      &lt;!&ndash; 上传文件的最大值 &ndash;&gt;-->
+<!--      <max-file-size>2097152</max-file-size>-->
+<!--      &lt;!&ndash;请求的最大容量&ndash;&gt;-->
+<!--      <max-request-size>4194304</max-request-size>-->
+    </multipart-config>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>dispatcher</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>dispatcher</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  <!-- 欢迎页，默认进入index controller -->
+  <welcome-file-list>
+    <welcome-file>/</welcome-file>
+  </welcome-file-list>
+
+</web-app>
