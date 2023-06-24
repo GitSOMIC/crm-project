@@ -8,12 +8,15 @@ import com.bjpowernode.crm.settings.domain.DicValue;
 import com.bjpowernode.crm.settings.domain.User;
 import com.bjpowernode.crm.settings.service.DicValueService;
 import com.bjpowernode.crm.settings.service.UserService;
+import com.bjpowernode.crm.workbench.domain.Activity;
 import com.bjpowernode.crm.workbench.domain.Clue;
+import com.bjpowernode.crm.workbench.domain.ClueRemark;
+import com.bjpowernode.crm.workbench.service.ActivityService;
+import com.bjpowernode.crm.workbench.service.ClueRemarkService;
 import com.bjpowernode.crm.workbench.service.ClueService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -36,7 +39,10 @@ public class ClueController {
     private DicValueService dicValueService;
     @Autowired
     private ClueService clueService;
-
+    @Autowired
+    private ClueRemarkService clueRemarkService;
+    @Autowired
+    private ActivityService activityService;
     @RequestMapping("/workbench/clue/index.do")
     public String index(HttpServletRequest request) {
         //调用service层方法，查询动态数据
@@ -76,5 +82,20 @@ public class ClueController {
             throw new RuntimeException(e);
         }
         return returnObject;
+    }
+    @RequestMapping("/workbench/clue/detailClue.do")
+    public String detailClue(String clueId,HttpServletRequest request){
+        //调用service层方法，查询数据
+        Clue clue = clueService.queryClueForDetailById(clueId);
+        List<ClueRemark> clueRemarkList = clueRemarkService.queryClueRemarkForDetailByClueId(clueId);
+        List<Activity> activityList = activityService.queryActivityForDetailByClueId(clueId);
+
+//数据保存到request中
+        request.setAttribute("clue",clue);
+        request.setAttribute("clueRemarkList",clueRemarkList);
+        request.setAttribute("activityList",activityList);
+        //请求转发
+        return "/workbench/clue/detail";
+
     }
 }

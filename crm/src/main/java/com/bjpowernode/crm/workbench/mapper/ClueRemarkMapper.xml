@@ -172,7 +172,7 @@
                cr.create_time,
                u2.name as edit_by,
                cr.edit_time,
-               cr.edit_flag,
+               cr.edit_flag
 
         from tbl_clue_remark cr
                  join tbl_user u1 on cr.create_by = u1.id
