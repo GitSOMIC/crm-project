@@ -20,6 +20,7 @@ import java.util.Map;
 public class ActivityServiceImpl implements ActivityService {
     @Autowired
     private ActivityMapper activityMapper;
+
     @Override
     public int saveCreateActivity(Activity activity) {
         return activityMapper.insertActivity(activity);
@@ -72,7 +73,23 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Override
     public List<Activity> queryActivityForDetailByClueId(String clueId) {
-       return activityMapper.selectActivityForDetailByClueId(clueId);
+        return activityMapper.selectActivityForDetailByClueId(clueId);
+
+    }
+
+    @Override
+    public List<Activity> queryActivityForDetailByNameClueId(Map<String, Object> map) {
+        return activityMapper.selectActivityForDetailByNameClueId(map);
+    }
+
+    @Override
+    public List<Activity> queryActivityForDetailByActivityIds(String[] activityIds) {
+        return activityMapper.selectActivityForDetailByActivityIds(activityIds);
+    }
+
+    @Override
+    public List<Activity> selectActivityForConvertByNameClueId(Map<String, Object> map) {
+        return activityMapper.selectActivityForConvertByNameClueId(map);
 
     }
 }

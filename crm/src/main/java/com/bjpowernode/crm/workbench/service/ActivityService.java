@@ -12,7 +12,7 @@ import java.util.Map;
  * @Description TODO
  * @since 1.0
  */
-public interface ActivityService {
+public interface ActivityService  {
     int saveCreateActivity(Activity activity);
 
     List<Activity> queryActivityByConditionForPage(Map<String, Object> map);
@@ -33,5 +33,9 @@ public interface ActivityService {
 
     Activity queryActivityForDetailById(String id);
     List<Activity> queryActivityForDetailByClueId(String clueId);
+    List<Activity> queryActivityForDetailByNameClueId(Map<String,Object> map);
+
+    List<Activity> queryActivityForDetailByActivityIds(String[] activityIds);
+    List<Activity> selectActivityForConvertByNameClueId(Map<String,Object> map);
 
 }
