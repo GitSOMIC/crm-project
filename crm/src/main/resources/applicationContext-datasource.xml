@@ -16,8 +16,8 @@
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
         <property name="username" value="root"/>
-        <property name="password" value="root"/>
-        <property name="url" value="jdbc:mysql://127.0.0.1:3306/crm2008"/>
+        <property name="password" value="password"/>
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/crm"/>
     </bean>
     <!-- 配置SqlSessionFactory -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

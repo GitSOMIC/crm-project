@@ -18,7 +18,7 @@
         $(function (){
            //
             $("#customerName").typeahead({
-                source:['京东商城','阿里巴巴','百度网络科技','字节跳动','动力节点']
+                source:['京东商城','阿里巴巴','百度网络科技','字节跳动','Twitter']
             });
         });
     </script>

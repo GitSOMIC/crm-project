@@ -2,7 +2,17 @@
 <module type="GENERAL_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/crm" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/crm-mybatis-generator" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/crm-mybatis-generator/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/crm/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/crm/src/main" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/crm/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/crm/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/crm/src/main/webapp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/crm/src/test" isTestSource="true" />
+    </content>
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

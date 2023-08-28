@@ -289,4 +289,10 @@
                              next_contact_time)
         values (#{id},#{ owner},#{ money},#{ name},#{ expectedDate},#{ customerId},#{ stage},#{ type},#{ source},#{ activityId},#{contactsId},#{ createBy},#{ createTime},#{ description},#{ contactSummary},#{nextContactTime})
     </insert>
+    <select id="selectCountOfTranGroupByStage" resultType="com.bjpowernode.crm.workbench.domain.FunnelVO">
+        select count(*) as value,dv.value as name
+        from tbl_tran t
+        join tbl_dic_value dv on t.stage=dv.id
+        group by stage
+    </select>
 </mapper>

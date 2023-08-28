@@ -5,6 +5,7 @@ import com.bjpowernode.crm.commons.utils.DateUtils;
 import com.bjpowernode.crm.commons.utils.UUIDUtils;
 import com.bjpowernode.crm.settings.domain.User;
 import com.bjpowernode.crm.workbench.domain.Customer;
+import com.bjpowernode.crm.workbench.domain.FunnelVO;
 import com.bjpowernode.crm.workbench.domain.Tran;
 import com.bjpowernode.crm.workbench.mapper.CustomerMapper;
 import com.bjpowernode.crm.workbench.mapper.TranMapper;
@@ -15,6 +16,7 @@ import org.springframework.transaction.TransactionManager;
 import org.springframework.util.unit.DataUnit;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -66,5 +68,10 @@ public class TranServiceImpl implements TranService {
         tran.setDescription((String) map.get("description"));
         tran.setSource((String) map.get("source"));
          tranMapper.insertTran(tran);
+    }
+
+    @Override
+    public List<FunnelVO> queryCountOfTranGroupByStage() {
+        return tranMapper.selectCountOfTranGroupByStage();
     }
 }

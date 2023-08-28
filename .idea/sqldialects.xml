@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$USER_HOME$/Desktop/table/crm-3_市场活动.sql" dialect="MySQL" />
+    <file url="file://$USER_HOME$/Desktop/table/crm-4_线索_客户_联系人_交易.sql" dialect="MySQL" />
+    <file url="file://$USER_HOME$/Desktop/table/dictionary.sql" dialect="MySQL" />
+    <file url="file://$USER_HOME$/Desktop/table/tbl_user.sql" dialect="MySQL" />
+    <file url="file://$USER_HOME$/Desktop/table/数据字典表数据/tbl_dic_type.sql" dialect="MySQL" />
+    <file url="file://$USER_HOME$/Desktop/table/数据字典表数据/tbl_dic_value.sql" dialect="MySQL" />
+  </component>
+</project>
