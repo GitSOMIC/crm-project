@@ -1,0 +1,77 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/";
+%>
+<html>
+<head>
+  <base href="<%=basePath%>">
+  <title>ECharts2</title>
+  <script type="text/javascript" src="jquery/jquery-1.11.1-min.js"></script>
+  <script type="text/javascript" src="jquery/echars/echarts.min.js"></script>
+  <!-- 引入刚刚下载的 ECharts 文件 -->
+<%--  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>--%>
+</head>
+<body>
+<!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+<div id="main" style="width: 600px;height:400px;"></div>
+<script type="text/javascript">
+  // 基于准备好的dom，初始化echarts实例
+  var myChart = echarts.init(document.getElementById('main'));
+
+  // 指定图表的配置项和数据
+  option = {
+    title: {
+      text: '交易统计图表',
+      subtext:'交易表中各个阶段的数量'
+    },
+    tooltip: {
+      trigger: 'item',
+      formatter: '{a} <br/>{b} : {c}%'
+    },
+    toolbox: {
+      feature: {
+        dataView: { readOnly: false },
+        restore: {},
+        saveAsImage: {}
+      }
+    },
+    legend: {
+      data: [ 'Click', 'Visit','Show', 'Inquiry', 'Order']
+    },
+    series: [
+      {
+        name: '数据量',
+        type: 'funnel',
+        left: '10%',
+        width: '80%',
+        label: {
+          formatter: '{b}'
+        },
+        labelLine: {
+          show: true
+        },
+        itemStyle: {
+          opacity: 0.7
+        },
+        emphasis: {
+          label: {
+            position: 'inside',
+            formatter: '{b}: {c}'
+          }
+        },
+        data: [
+          { value: 60, name: 'Visit' },
+          { value: 40, name: 'Inquiry' },
+          { value: 20, name: 'Order' },
+          { value: 80, name: 'Click' },
+          { value: 100, name: 'Show' }
+        ]
+      }
+    ]
+  };
+  // 使用刚指定的配置项和数据显示图表。
+  myChart.setOption(option);
+</script>
+</body>
+</html>
